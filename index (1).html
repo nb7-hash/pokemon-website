@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Search</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+       
+
+</head>
+<body>
+<div class="pos"></div>
+    <nav class="app-navbar app-navbar-desktop">
+        <div class="logo"><img src="https://i.pinimg.com/736x/05/b5/f8/05b5f811d19e98684c60712428065446.jpg" class="ims ims-desktop" /></div>
+        <ul class="nav-links nav-links-desktop" id="navLinks">
+            <li><a href="#homeSection"  ><i class="fa-solid fa-house fa-xs" style="color: rgb(238, 236, 227);"></i> Home</a></li>
+            <li><a href="#specialedition"><i class="fa-solid fa-fire fa-xs" style="color: rgb(238, 236, 227);"></i> Edition</a></li>
+            <li><a href="#pokedexs"><i class="fa-solid fa-bolt fa-xs" style="color: rgb(238, 236, 227);"></i> POkedex</a></li>
+            <li><a href="#footerSection"><i class="fa-solid fa-phone fa-xs" style="color: rgb(238, 236, 227);"></i> Contact</a></li>
+        </ul>
+        <button class="hamburger hamburger-desktop" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+    <div class="main-container main-container-desktop" id="homeSection">
+        <video class="hero-bg-video hero-bg-video-landscape" autoplay  loop playsinline preload="auto" aria-hidden="true">
+            <source src="vid/roc.mp4" type="video/mp4">  
+        </video>
+         <video class="hero-bg-video hero-bg-video-mobile"  autoplay muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="vid/mob.mp4" type="video/mp4">  
+        </video>
+       
+        
+        <div class="hero-content flex flex-col justify-center items-center">
+        <div class="name-container">
+            <h3 class="tagLine tagLine-desktop"><span class="c-1">Catch your favorite </span><span class="s1">Pokemon</span> <br><span class="s1">Search</span> <span class="s2">100+</span> Pokemon</h3>
+            
+       </div>
+     
+        </div>
+         
+        <div class="search-container">
+            <input type="text" class="input-values input-values-desktop" id="input_value" placeholder="Enter Pokémon name..." />
+            <p id="err-msg"></p>
+            <button id="Go" class="btn-style">Go</button>
+            <div id="spinning" class="app-hidden"></div>
+        </div>
+        <div class="adjust">
+            <div id="result" class="contianers contianers-desktop">
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!--special-edition-section-->
+<section id="specialedition">
+    <div class="background background-desktop">
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <div class="Know Know-desktop">
+            <h1 class="known-name">special edition!</h1>
+        </div>
+        <div class="showcase-grid">
+            <div class="box1 card1">
+                <div class="align">
+                    <img src="https://pngimg.com/uploads/pokemon/pokemon_PNG12.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Pikachu</p>
+                  <a href="https://www.pokemon.com/us/pokedex/pikachu" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/Pok%C3%A9mon_Charizard_art.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Charizard</p>
+                  <a href="https://www.pokemon.com/us/pokedex/charizard" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/448.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Lucario</p>
+                  <a href="https://www.pokemon.com/us/pokedex/lucario" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/658.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Greninja</p>
+                  <a href="https://pokemondb.net/pokedex/greninja" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/4b/Pok%C3%A9mon_Mew_art.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>cute mew</p>
+                  <a href="https://www.pokemon.com/us/pokedex/mew" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/150_f3.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Mewtwo </p>
+                  <a href="https://www.pokemon.com/us/pokedex/mewtwo" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/384.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Rayquaza</p>
+                  <a href="https://pokemondb.net/pokedex/rayquaza" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://img.pokemondb.net/sprites/sun-moon/normal/gengar.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Gengar</p>
+                  <a href="http://pokemondb.net/pokedex/gengar" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+
+            <div class="box1">
+                <div class="align">
+                    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/197.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Umbreon</p>
+                  <a href="https://www.pokemon.com/us/pokedex/umbreon" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://assets.dittobase.com/go/pokemon/149-dragonite-mega-shiny.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Dragonite</p>
+                  <a href="https://www.pokemon.com/us/pokedex/dragonite" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://in.portal-pokemon.com/play/resources/pokedex/img/pm/aec0f6071e56c3ca9fafe8ca98683033077e710e.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Garchomp</p>
+                  <a href="https://pokemondb.net/pokedex/garchomp" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+            <div class="box1">
+                <div class="align">
+                    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/888.png" class="img-size" />
+                </div>
+                <div class="content-container">
+                    <p>Zacian</p>
+                  <a href="https://pokemondb.net/pokedex/zacian" target="_blank"> <button class="styles">View</button></a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Pokedex-section-->
+
+<section id="pokedexs">
+     <div class="main">
+        <div class="name-container1">
+                    <h1 class="special-name-tagLine">Unique POkedex </h1>
+
+        </div>
+   <div id="carouselExampleCaptions" class="carousel slide">
+
+
+    <!-- Indicators -->
+    <div class="carousel-indicators" id="indicators">
+
+        <button type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1">
+        </button>
+
+        <button type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2">
+        </button>
+
+        <button type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3">
+        </button>
+      
+          <button type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="3"
+            aria-label="Slide 4">
+        </button>
+    </div>
+
+
+
+    <div class="carousel-inner" id="carouselContainer">
+
+
+
+        <!-- Pikachu -->
+       
+    <!-- Previous Button -->
+
+    <button class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+
+        <span class="carousel-control-prev-icon"></span>
+
+    </button>
+
+
+
+
+    <!-- Next Button -->
+
+    <button class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+
+        <span class="carousel-control-next-icon"></span>
+
+    </button>
+
+
+</div>
+</div>
+</section>
+
+ <footer class="sm:h-[90vh] md:h-[90vh] bg-[#1E3A8A] p-4 borders" id="footerSection">
+        <div>
+            <hr>
+            <p class="text-center text-white  font-bold mt-2"><i class="fa-solid fa-bolt fa-2xl" style="color: rgb(255, 212, 59);"></i><span class="xs:text-[20px] md:text-4xl">Pokemon Explorer</span></p>
+            <div class="flex flex-col justify-center p-3">
+                <ul class="flex flex-row justify-center items-center m-3 text-white list-disc md:text-2xl">
+                    <li class="m-3">catch</li>
+                    <li class="m-3">Discover</li>
+                    <li class="m-3">Explore</li>
+                    <li class="m-3">Battle</li>
+
+                </ul>
+            </div>
+            <div class="md:flex md:flex-row">
+                <div class="flex flex-col justify-center items-center w-full md:items-center md:justify-start">
+                    <p class="text-center text-white font-bold text-[23px]">Links</p>
+                    <div class="flex flex-row">
+                        <div class="m-3 colors  h-[30px]">
+                        <a href="#homeSection"><i class="fa-regular fa-house  fa-2xl icons"></i></a>   
+                        </div>
+                        <div class="m-3 colors">
+                         <a href="#specialedition"><i class="fa-solid fa-fire  fa-2xl icons"></i></a>   
+                        </div>
+                        <div class="m-3 colors">
+                          <a href="#pokedexs"><i class="fa-solid fa-bolt  fa-2xl icons"></i></a>  
+                        </div>
+                        <div class="m-3 colors">
+                           <a href="#footerSection"><i class="fa-solid fa-phone fa-2xl icons"></i></a> 
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="flex flex-col justify-center items-center w-full p-3">
+                    <p class="text-center text-white font-bold text-[23px]">Follow US</p>
+                    <div class="flex flex-row">
+                        <div class="m-3 colors rounded-full h-[30px]">
+                          <a href="https://github.com/nb7-hash" target="_blank"><i class="fa-brands fa-github-alt fa-2xl fa-width-auto" style="color: rgb(255, 212, 59);"></i></a>  
+                            <p class="text-center">Git</p>
+
+                        </div>
+                        <div class="m-3 colors rounded-full h-[30px]">
+                          <a href="https://www.linkedin.com/in/nithinkaariappa/" target="_blank">  <i class="fa-brands fa-linkedin fa-2xl" style="color: rgb(255, 212, 59);"></i></a>
+                            <p class="text-center">In</p>
+
+                        </div>
+                        <div class="m-3 colors rounded-full h-[30px]">
+                           <a href="https://www.instagram.com/_nb7___/" target="_blank"><i class="fa-brands fa-square-instagram fa-2xl" style="color: rgb(255, 212, 59);"></i></a> 
+                            <p class="text-center">Insta</p>
+                        </div>
+                        <div class="m-3 colors rounded-full h-[30px]">
+                           <a href="https://x.com/Nithinkaariappa" target="_blank"><i class="fa-brands fa-square-x-twitter fa-2xl md:fa:2xl" style="color: rgb(255, 212, 59);"></i></a> 
+                            <p class="text-center">X</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:flex md:flex-row md:justify-around md:items-center hidden md:block">
+                <div class="text-white bg-black h-[150px] rounded p-3">
+                    <ul class="list-disc ">Quick Links
+                      <a href="https://www.pokemon.com/us/pokedex" class="foot-links" target="_blank">  <li class="ml-5">PokeDex</li></a>
+                       <a href="https://www.pokemon.com/us/news" class="foot-links" target="_blank"> <li class="ml-5">Trending Pokemon</li></a>
+                        <a href="https://bulbapedia.bulbagarden.net/wiki/Legendary_Pok%C3%A9mon" class="foot-links" target="_blank"><li class="ml-5">Legendary Pokemon</li></a>
+                    </ul>
+                </div>
+                <div class="text-white bg-black h-[150px] rounded p-3">
+                    <ul class="list-disc ">Resources
+                      <a href="https://pokeapi.co/"  target="_blank" class="foot-links">  <li class="ml-5 ">POkeApi</li></a>
+                       <a href="https://www.pokemon.com/us" target="_blank" class="foot-links"> <li class="ml-5 ">Pokemon Official</li></a>
+                        <a href="https://github.com/topics/pokemon" target="_blank" class=" foot-links"><li class="ml-5">GitHub</li></a>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-3">
+            <div class="mt-3 flex flex-row justify-around items-center md:hidden ">
+                <p class=" text-white text-center"><i class="fa-regular fa-copyright" style="color: rgb(245, 243, 238);"></i>2026 Pokemon Explorer
+                    <br> Built with <i class="fa-solid fa-heart fa-lg" style="color: black;"></i> by Nithin<br>
+                    Powered by PokeAPI
+                </p>
+
+            </div>
+            <div class="md:block hidden p-3 mt-3">
+                <p class=" text-white text-center"><i class="fa-regular fa-copyright" style="color: rgb(245, 243, 238);"></i>2026 Pokemon Explorer
+                    Built with <i class="fa-solid fa-heart fa-lg" style="color: black;"></i> by Nithin
+                    POwered by PokeAPI</p>
+
+            </div>
+            <hr class="mt-2">
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
