@@ -1,5 +1,5 @@
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
 let go_button = document.getElementById("Go");
 let inputValue = document.getElementById("input_value");
 let res = document.getElementById("result");
@@ -8,160 +8,158 @@ let loading = document.getElementById("spinning");
 let result_container = document.getElementById("result");
 
 window.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".hero-bg-video").forEach((video) => {
-        video.muted = true;
-        video.play().catch(() => {});
-    });
+  document.querySelectorAll(".hero-bg-video").forEach((video) => {
+    video.muted = true;
+    video.play().catch(() => {});
+  });
 });
 
 const specialCards = document.querySelectorAll(".box1");
 
-const cardObserver = new IntersectionObserver((entries) => {
+const cardObserver = new IntersectionObserver(
+  (entries) => {
     entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("card-show");
-        } else {
-            entry.target.classList.remove("card-show");
-        }
+      if (entry.isIntersecting) {
+        entry.target.classList.add("card-show");
+      } else {
+        entry.target.classList.remove("card-show");
+      }
     });
-}, {
-    threshold: 0.5
-});
+  },
+  {
+    threshold: 0.5,
+  },
+);
 
 specialCards.forEach((card) => {
-    cardObserver.observe(card);
+  cardObserver.observe(card);
 });
 
 // Display Pokémon details
 function setit(result) {
-    const typeColors = {
-        fire: "#F08030",
-        water: "#6890F0",
-        grass: "#78C850",
-        electric: "#F8D030",
-        psychic: "#F85888",
-        ice: "#98D8D8",
-        dragon: "#7038F8",
-        dark: "#705848",
-        fairy: "#EE99AC",
-        fighting: "#C03028",
-        poison: "#A040A0",
-        ground: "#E0C068",
-        flying: "#A890F0",
-        bug: "#A8B820",
-        rock: "#B8A038",
-        ghost: "#705898",
-        steel: "#B8B8D0",
-        normal: "#A8A878"
-    };
-    let image_container = document.createElement("div");
-    let name_container = document.createElement("div");
-    let type = document.createElement("p");
-    const types = result.types[0].type.name;
-    const colors = typeColors[types.toLowerCase()];
-    type.textContent = "Type: " + types;
-    type.style.textAlign = "left";
-    let image = document.createElement("img");
-    image.classList.add("pokemon-photo", "pokemon-photo-desktop");
-    image.src = result.sprites.front_default;
-    image_container.appendChild(image);
-    const rowLine = document.createElement("hr");
-    rowLine.style.borderColor = "blue";
-    let ids = document.createElement("p");
-    ids.textContent = "ID: " + result.id;
-    ids.style.textAlign = "left";
-    let name = document.createElement("p");
-    name.textContent = "Name: " + result.name.toUpperCase();
-    name.style.textAlign = "left";
-    let weight = document.createElement("p");
-    weight.textContent = "Weight: " + result.weight;
-    name_container.appendChild(ids);
-    name_container.appendChild(name);
-    name_container.appendChild(type);
-    name_container.appendChild(weight);
-    name_container.classList.add("info_containers");
-    result_container.appendChild(image_container);
-    result_container.appendChild(name_container);
-    result_container.style.backgroundColor = colors;
-    parMsg.textContent = "";
+  const typeColors = {
+    fire: "#F08030",
+    water: "#6890F0",
+    grass: "#78C850",
+    electric: "#F8D030",
+    psychic: "#F85888",
+    ice: "#98D8D8",
+    dragon: "#7038F8",
+    dark: "#705848",
+    fairy: "#EE99AC",
+    fighting: "#C03028",
+    poison: "#A040A0",
+    ground: "#E0C068",
+    flying: "#A890F0",
+    bug: "#A8B820",
+    rock: "#B8A038",
+    ghost: "#705898",
+    steel: "#B8B8D0",
+    normal: "#A8A878",
+  };
+  let image_container = document.createElement("div");
+  let name_container = document.createElement("div");
+  let type = document.createElement("p");
+  const types = result.types[0].type.name;
+  const colors = typeColors[types.toLowerCase()];
+  type.textContent = "Type: " + types;
+  type.style.textAlign = "left";
+  let image = document.createElement("img");
+  image.classList.add("pokemon-photo", "pokemon-photo-desktop");
+  image.src = result.sprites.front_default;
+  image_container.appendChild(image);
+  const rowLine = document.createElement("hr");
+  rowLine.style.borderColor = "blue";
+  let ids = document.createElement("p");
+  ids.textContent = "ID: " + result.id;
+  ids.style.textAlign = "left";
+  let name = document.createElement("p");
+  name.textContent = "Name: " + result.name.toUpperCase();
+  name.style.textAlign = "left";
+  let weight = document.createElement("p");
+  weight.textContent = "Weight: " + result.weight;
+  name_container.appendChild(ids);
+  name_container.appendChild(name);
+  name_container.appendChild(type);
+  name_container.appendChild(weight);
+  name_container.classList.add("info_containers");
+  result_container.appendChild(image_container);
+  result_container.appendChild(name_container);
+  result_container.style.backgroundColor = colors;
+  parMsg.textContent = "";
 }
 
 // Search Pokémon
 async function searchPokemon() {
-    const searchName = inputValue.value.toLowerCase().trim();
-    if (searchName === "") {
-        loading.classList.add("app-hidden");
-        parMsg.textContent = "Please enter a Pokémon name.";
-        return;
+  const searchName = inputValue.value.toLowerCase().trim();
+  if (searchName === "") {
+    loading.classList.add("app-hidden");
+    parMsg.textContent = "Please enter a Pokémon name.";
+    return;
+  }
+  const url = `https://pokeapi.co/api/v2/pokemon/${searchName}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Pokemon not found");
     }
-    const url = `https://pokeapi.co/api/v2/pokemon/${searchName}`;
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error("Pokemon not found");
-        }
-        const data = await response.json();
-        res.innerHTML = "";
-        setit(data);
-        inputValue.value = "";
-    } catch (error) {
-        loading.classList.add("app-hidden");
-        res.innerHTML = "";
-        parMsg.textContent = "Pokémon not found!";
-    }
+    const data = await response.json();
+    res.innerHTML = "";
+    setit(data);
+    inputValue.value = "";
+  } catch (error) {
+    loading.classList.add("app-hidden");
+    res.innerHTML = "";
+    parMsg.textContent = "Pokémon not found!";
+  }
 }
 
 // Button Click
 go_button.addEventListener("click", async () => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    searchPokemon();
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  searchPokemon();
 });
 
 // Press Enter to Search
 inputValue.addEventListener("keydown", async (event) => {
-    if (event.key === "Enter") {
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        searchPokemon();
-    }
+  if (event.key === "Enter") {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    searchPokemon();
+  }
 });
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('hamburger-open');
-    navLinks.classList.toggle('nav-menu-open');
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("hamburger-open");
+  navLinks.classList.toggle("nav-menu-open");
 });
 
 // Close menu when a link is clicked (nice for mobile UX)
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('hamburger-open');
-        navLinks.classList.remove('nav-menu-open');
-    });
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("hamburger-open");
+    navLinks.classList.remove("nav-menu-open");
+  });
 });
-
-
-
 
 const carousel = document.getElementById("carouselContainer");
 const indicators = document.getElementById("indicators");
 
 async function getPokemon() {
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=15");
+  const data = await response.json();
 
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=15");
-    const data = await response.json();
+  for (const [index, pokemon] of data.results.entries()) {
+    const detailResponse = await fetch(pokemon.url);
+    const pokemonData = await detailResponse.json();
 
-    for (const [index, pokemon] of data.results.entries()) {
+    const active = index === 0 ? "active" : "";
 
-        const detailResponse = await fetch(pokemon.url);
-        const pokemonData = await detailResponse.json();
+    const hp = pokemonData.stats.find(
+      (stat) => stat.stat.name === "hp",
+    ).base_stat;
 
-        const active = index === 0 ? "active" : "";
-
-        const hp = pokemonData.stats.find(
-            stat => stat.stat.name === "hp"
-        ).base_stat;
-
-        // Create Indicator
-        indicators.innerHTML += `
+    // Create Indicator
+    indicators.innerHTML += `
             <button
                 type="button"
                 data-bs-target="#carouselExampleCaptions"
@@ -172,8 +170,8 @@ async function getPokemon() {
             </button>
         `;
 
-        // Create Card
-        carousel.innerHTML += `
+    // Create Card
+    carousel.innerHTML += `
         <div class="carousel-item ${active}">
 
             <div class="d-flex justify-content-center align-items-center vh-100">
@@ -245,8 +243,8 @@ async function getPokemon() {
 
                             <span class="badge bg-warning text-dark fs-6 fw-bold">
                               ${pokemonData.types
-                                    .map(type => type.type.name)
-                                    .join(", ")}
+                                .map((type) => type.type.name)
+                                .join(", ")}
 
                             </span>
 
@@ -261,7 +259,7 @@ async function getPokemon() {
 
         </div>
         `;
-    }
+  }
 }
 
 getPokemon();
