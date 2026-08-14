@@ -1,0 +1,877 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Sekuya&display=swap');
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+
+}
+
+/* ============================= */
+/* NAVBAR — BASE (applies to all sizes) */
+/* ============================= */
+.app-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(208, 22, 22, 0.3);
+   
+}
+
+.btn-style {
+    background: linear-gradient(to right, yellow, blue);
+    width: 150px;
+    height: 40px;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.app-navbar .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1886b4;
+    letter-spacing: 1px;
+
+}
+
+.ims {
+    height: 30px;
+    width: 25px;
+    border-radius: 15px;
+}
+
+/* NAV LINKS — MOBILE (below 768px): slide-in panel */
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 2rem;
+    gap: 1.5rem;
+    list-style: none;
+    transform: translateX(100%);
+    transition: transform 1s ease-in-out;
+    border-radius: 10px;
+    background: rgba(12, 18, 32, 0.58);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: -10px 0 30px rgba(155, 31, 31, 0.22);
+
+   
+}
+
+.nav-links.nav-menu-open {
+    transform: translateX(0);
+}
+
+.nav-links a {
+    color: #e5e7eb;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+
+.nav-links a:hover {
+    color: rgb(15, 240, 15);
+    transform: translate(15px);
+    font-style: bold;
+}
+
+/* Hamburger button — visible by default (mobile) */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 1100;
+}
+
+.hamburger span {
+    width: 26px;
+    height: 3px;
+    background: #cbced4;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger.hamburger-open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.hamburger-open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.hamburger-open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+.main-container {
+    min-height: 100dvh;
+    background-color: #020716;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    isolation: isolate;
+}
+
+.hero-bg-video {
+    position: absolute;
+    inset: 0;
+    top: 80px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-bg-video-mobile {
+    display: none;
+}
+
+@media (orientation: portrait), (max-width: 756px) {
+    .hero-bg-video-landscape {
+        display: none;
+    }
+
+    .hero-bg-video-mobile {
+        display: block;
+    }
+}
+
+.main-container::after {
+    content: "";
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 18%, rgba(255, 230, 0, 0.18), transparent 32%),
+        linear-gradient(180deg, rgba(5, 8, 18, 0.36), rgba(5, 8, 18, 0.72));
+    z-index: 1;
+}
+
+.main-container > :not(.hero-bg-video) {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    width: min(92%, 760px);
+    min-height: 60dvh;
+    padding: 96px 12px 32px;
+    position: relative
+    
+}
+
+.fixed-image{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: poke 0.1s ease-in-out;
+    animation-timeline: scroll();
+    animation-range:0% cover 60% cover;
+   
+}
+
+.rotate-card {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    width: 100%;
+    background-color: red;
+}
+@keyframes poke {
+    from{
+        opacity: 1;
+    }
+    to{
+
+        transform: rotate(360deg);
+
+    }
+    
+}
+
+
+.tagLine {
+    color: white;
+    font-family: Open Sans;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    flex-shrink: 0;
+    margin-top: 45px;
+    gap: 10px;
+    padding: 5px;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.img-size {
+    height: 150px;
+    width: 150px;
+}
+
+h1 {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 20px;
+}
+
+.input-values {
+    border-radius: 15px;
+    height: 40px;
+    border-color: blue;
+    padding: 5px;
+    width: 90%;
+}
+
+.btn-contianer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.adjust {
+    gap: 10px;
+}
+
+.contianers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 256px;
+    max-height: 570px;
+    border-radius: 20px;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.info_containers {
+    height: 320px;
+    width: 230px;
+    background: linear-gradient(to top, yellow, blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+     border: 2px  solid black;
+}
+
+.spinner-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.pokemon-photo {
+    height: 200px;
+    width: 200px;
+}
+
+.names {
+    font-family: Roboto;
+    color: white;
+}
+
+.ims-size {
+    height: 40px;
+    width: 70px;
+}
+
+.go-btn {
+    background-image: linear-gradient(to right, #e83c48, white);
+    color: white;
+    font-weight: bold;
+}
+
+.heading {
+    color: white;
+    font-family: Open Sans;
+    font-weight: bold;
+}
+
+.input-continers {
+    width: 90%;
+}
+
+.ims-size1 {
+    align-self: flex-start;
+}
+
+.content {
+    padding: 3rem 2rem;
+}
+
+.s1 {
+    color: yellow;
+}
+
+.s2 {
+    color: red;
+}
+
+
+
+@media (min-width: 768px) {
+
+    .app-navbar-desktop {
+        padding: 1rem 4rem;
+        background: rgba(12, 18, 32, 0.3);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 30px;
+        border-color: red;
+        border: 2px solid rgb(232, 220, 220);
+        height: 80px;
+           }
+
+    .hamburger-desktop {
+        display: none;
+    }
+
+    /* Undo mobile slide-in — show links directly, inline */
+    .nav-links-desktop {
+        position: static;
+        right: 0;
+        height: 50px;
+        width: 490px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        gap: 2rem;
+        box-shadow: none;
+        transform: none;
+        transition: none;
+        border-radius: 20px;
+    }
+
+    .main-container-desktop {
+        background: #050812;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-content {
+        min-height: 72dvh;
+        padding-top: 80px;
+    }
+
+    .contianers-desktop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        min-width: 576px;
+    }
+
+    .pokemon-photo-desktop {
+        height: 320px;
+        width: 320px;
+    }
+
+    .input-values-desktop {
+        width: 576px;
+    }
+
+    .ims-desktop {
+        height: 50px;
+        width: 50px;
+        border-radius: 15px;
+    }
+
+    .tagLine-desktop {
+        font-size: 50px;
+        margin-top: 30px;
+font-family: "Black Ops One", system-ui;    }
+
+    .c-1 {
+        color: red;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-bg-video {
+        display: none;
+    }
+}
+
+/* ============================================= */
+/* Utility classes still used by index.html/script.js */
+/* (search error message + loading spinner)        */
+/* ============================================= */
+
+#err-msg {
+    color: #f87171;
+    font-family: sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+.app-hidden {
+    display: none !important;
+}
+
+#spinning {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #ddd;
+    border-top-color: #38bdf8;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================= */
+/* Second section: decorative Pokémon showcase     */
+/* (floating balls + card grid)                    */
+/* ============================================= */
+@media (min-width:200px)
+{
+.background {
+        position: relative;
+        width: 100%;
+        min-height: 150vh;
+        overflow: hidden;
+            background: linear-gradient(to right, #dddde2, #3B82F6, #06B6D4);
+       display: flex;
+       flex-direction: column;
+      
+    }
+    .Know{
+      
+       background-color: #0d4b41;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items: center;
+        max-width: 70%;
+        height: 50px;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+    .known-name{
+        font-size: 25px;
+        color: white;
+        font-family: "Black Ops One", system-ui;
+    }
+     .ball {
+        position: absolute;
+        width: 20vmin;
+        height: 20vmin;
+        border-radius: 50%;
+        backface-visibility: hidden;
+        animation: move 0.1s ease-in-out infinite;
+    }
+
+    .ball:nth-child(odd) {
+        color: #0d4b41;
+    }
+
+    .ball:nth-child(even) {
+        color: #d32313;
+    }
+
+    .ball:nth-child(1) {
+        top: 77%;
+        left: 88%;
+        animation-duration: 40s;
+        animation-delay: -3s;
+        transform-origin: 16vw -2vh;
+        box-shadow: 40vmin 0 5.703076368487546vmin currentColor;
+    }
+
+    .ball:nth-child(2) {
+        top: 42%;
+        left: 2%;
+        animation-duration: 53s;
+        animation-delay: -29s;
+        transform-origin: -19vw 21vh;
+        box-shadow: -40vmin 0 5.17594621519026vmin currentColor;
+    }
+
+    .ball:nth-child(3) {
+        top: 28%;
+        left: 18%;
+        animation-duration: 49s;
+        animation-delay: -8s;
+        transform-origin: -22vw 3vh;
+        box-shadow: 40vmin 0 5.248179047256236vmin currentColor;
+    }
+
+    .ball:nth-child(4) {
+        top: 50%;
+        left: 79%;
+        animation-duration: 26s;
+        animation-delay: -21s;
+        transform-origin: -17vw -6vh;
+        box-shadow: 40vmin 0 5.279749632220298vmin currentColor;
+    }
+
+    .ball:nth-child(5) {
+        top: 46%;
+        left: 15%;
+        animation-duration: 36s;
+        animation-delay: -40s;
+        transform-origin: 4vw 0vh;
+        box-shadow: -40vmin 0 5.964309466052033vmin currentColor;
+    }
+
+    .ball:nth-child(6) {
+        top: 77%;
+        left: 16%;
+        animation-duration: 31s;
+        animation-delay: -10s;
+        transform-origin: 18vw 4vh;
+        box-shadow: 40vmin 0 5.178483653434181vmin currentColor;
+    }
+
+    .ball:nth-child(7) {
+        top: 22%;
+        left: 17%;
+        animation-duration: 55s;
+        animation-delay: -6s;
+        transform-origin: 1vw -23vh;
+        box-shadow: -40vmin 0 5.703026794398318vmin currentColor;
+    }
+
+    .ball:nth-child(8) {
+        top: 41%;
+        left: 47%;
+        animation-duration: 43s;
+        animation-delay: -28s;
+        transform-origin: 25vw -3vh;
+        box-shadow: 40vmin 0 5.196265905749415vmin currentColor;
+    }
+
+  
+.showcase-grid {
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+     
+    place-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+  
+
+.box1 {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 8px 2px rgba(127, 6, 6, 0.3);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    color: rgb(7, 7, 7);
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.8s ease-out;
+}
+
+.box1.card-show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid black;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.align {
+    align-self: center;
+    margin-top: 10px;
+}
+
+.border_size {
+    width: 70%;
+    border-color: red;
+}
+
+.styles {
+    border: 0px;
+    background: linear-gradient(to right, blue, white);
+    height: 30px;
+    width: 130px;
+    border-radius: 20px;
+    color: white;
+    font-size: 15px;
+    transition:all 1s ease-in-out;
+    cursor:pointer;
+}
+.styles:hover{
+  
+  background:linear-gradient(to right,red,yellow);
+transform: translateY(-5px);
+}
+
+.box2 {
+    display: none;
+}
+
+}
+@media (min-width:768px) {
+   
+   
+    .background-desktop {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        background: #eaf1f1;
+        overflow: hidden;
+        padding: 10px;
+        gap: 10px;
+    }
+  .Know-desktop{
+    width: 30%;
+  }
+   
+    .box1::before {
+        content: '';
+        position: relative;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(0deg,
+                transparent,
+                transparent 30%,
+                rgba(0, 255, 255, 0.3));
+        transition: all 5s ease-in-out;
+        opacity: 0;
+        margin-top: 10px;
+    }
+
+    .box1.card-show:hover {
+        transform: translateY(-15px) scale(1);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        
+    }
+
+   }
+
+@keyframes move {
+    100% {
+        transform: translate3d(0, 0, 1px) rotate(360deg);
+    }
+}
+
+
+
+
+
+
+    .main{
+        min-height:100vh;
+ background: linear-gradient(135deg,
+            red,
+            #1E3A8A,
+            #312E81,
+            yellow);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+    padding: 0.5rem;
+    gap: 40px;
+    position: relative;
+    
+    }
+    .name-container1{
+        background-color: red;
+        width: 340px;
+        text-align: center;
+         border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: white;
+    font-family: open sans;
+    height: 80px;
+     animation: rot 4s ease ;
+     animation-timeline: scroll();
+     animation-range:0% cover 100% cover;
+
+    
+    }
+    .special-name-tagLine{
+        font-size: 39px;
+        font-family: "Black Ops One", system-ui;
+        
+            }
+      @keyframes rot{
+        25%{
+             transform:translateY(-10px);
+        }
+        to{
+          transform:translateY(10px);
+          border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+        }
+       
+    }
+  
+
+    .cards-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: white;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 320px;
+    min-height: 340px;
+    margin: auto;
+     background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 5px solid rgba(227, 12, 12, 0.2);
+    
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+
+}
+
+.pokemon-card-img {
+    aspect-ratio: 1;
+    width: 120px;
+    object-fit: contain;
+}
+
+.cards-body {
+    width: 100%;
+    height: 120px;
+    padding:14px ;
+}
+
+
+hr {
+    border: 2px solid white;
+    margin-top: 120px;
+}
+
+.colors {
+    transition: all 1s ease;
+}
+
+.colors:hover {
+    color: white;
+    transform: translateY(-5px);
+
+}
+
+.icons {
+    color: white;
+}
+
+.icons:hover {
+    color: skyblue;
+}
+
+.borders {
+    border: 2px solid yellow;
+}
+
+.foot-links:hover{
+    color: blue;
+}
+
+
+.pos{
+    position: fixed;
+    height: 3px;
+    background: rgb(226, 242, 8);
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    animation: check 2s linear;
+    width: 100%;
+    transform-origin: 0 40%;
+    animation-timeline: scroll();
+}
+@keyframes check {
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+}
