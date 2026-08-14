@@ -60,6 +60,9 @@ function setit(result) {
   let image_container = document.createElement("div");
   let name_container = document.createElement("div");
   let type = document.createElement("p");
+  let image_pok=document.createElement("img");
+  image_pok.src="https://i.pinimg.com/736x/05/b5/f8/05b5f811d19e98684c60712428065446.jpg";
+  image_pok.classList.add("ims-desktops");
   const types = result.types[0].type.name;
   const colors = typeColors[types.toLowerCase()];
   type.textContent = "Type: " + types;
@@ -78,6 +81,7 @@ function setit(result) {
   name.style.textAlign = "left";
   let weight = document.createElement("p");
   weight.textContent = "Weight: " + result.weight;
+  name_container.appendChild(image_pok);
   name_container.appendChild(ids);
   name_container.appendChild(name);
   name_container.appendChild(type);

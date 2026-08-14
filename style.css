@@ -50,6 +50,33 @@ body {
   width: 25px;
   border-radius: 15px;
 }
+  
+@media (orientation: portrait)and (max-width:576px){
+  .ims-desktops{
+    display: none;
+  }
+  .card_img{
+    display: block;
+     height: 50px;
+    width: 50px;
+    object-fit: contain;
+
+  }
+}
+ 
+@media (min-width:676px){
+     .card_img{
+      display: none;
+     }
+      .ims-desktops{
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    border-radius: 50px;
+}
+
+}
 
 /* NAV LINKS — MOBILE (below 768px): slide-in panel */
 .nav-links {
@@ -737,14 +764,21 @@ h1 {
   border-top-right-radius: 20px;
   color: white;
   font-family: open sans;
-  height: 80px;
-  animation: rot 4s ease;
-  animation-timeline: scroll();
-  animation-range: 0% cover 100% cover;
+  height: 30px;
+  
 }
 .special-name-tagLine {
-  font-size: 39px;
+  font-size: 29px;
   font-family: "Black Ops One", system-ui;
+}
+@media  (min-width:776px){
+  .special-name-tagLine{
+    font-size: 39px;
+  }
+  .name-container1{
+    height: 50px;
+  }
+
 }
 @keyframes rot {
   25% {
